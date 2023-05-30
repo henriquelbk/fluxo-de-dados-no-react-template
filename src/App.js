@@ -1,6 +1,7 @@
 import styled, { createGlobalStyle } from "styled-components";
 import FormularioPostagem from "./components/FormularioPostagem/FormularioPostagem";
 import TelaDaPostagem from "./components/TelaDaPostagem/TelaDaPostagem";
+import { useState } from "react";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -17,15 +18,28 @@ const Container = styled.div`
 `;
 
 function App() {
+  const [photo, setPhoto] = useState("")
+  const [description, setDescription] = useState("")
+  const [title, setTitle] = useState("")
+
   return (
     <>
       <GlobalStyle />
 
       <Container>
 
-        <FormularioPostagem />
+        <FormularioPostagem
+          setPhoto={setPhoto}
+          setDescription={setDescription}
+          setTitle={setTitle}
+          title={title}
+          description={description}
+          photo={photo} />
 
-        <TelaDaPostagem />
+        <TelaDaPostagem title={title}
+          description={description}
+          photo={photo}
+        />
 
       </Container>
     </>
